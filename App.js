@@ -1,25 +1,35 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Form from "./form";
-import styles from "./styles";
+import React from 'react'
+import { StyleSheet } from 'react-native'
 
-export default function App() {
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import 'react-native-gesture-handler'
+
+import { Login, Main } from './screens'
+
+const Stack = createStackNavigator()
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Form />
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-const Person = (props) => {
-  const { name, age } = props;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+})
 
-  return (
-    <view>
-      <text>
-        Hello. My name is {name} and I am {age} years old
-      </text>
-    </view>
-  );
-};
+export default App
