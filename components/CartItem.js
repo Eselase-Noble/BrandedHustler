@@ -1,64 +1,79 @@
-import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Button,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  ActivityIndicator,
+  TextInput,
+  Alert,
+} from "react-native";
+import {
+  MaterialIcons,
+  AntDesign,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 const CartItem = ({
-  isFavourite = false,
-  name = "Bike",
-  price = "12, 000",
-  imageSrc = "https://www.pngmart.com/files/6/Bicycle-Transparent-PNG.png",
+  navigation,
+  isFavourite,
+  name,
+  price,
+  imageSrc,
+  color,
+  Reviews,
+  PromoInfo,
+  Size,
 }) => {
+  const [favourite, setFavourite] = useState(isFavourite);
+  useEffect(() => {
+    setFavourite(isFavourite);
+  }, [favourite]);
   return (
-    <View style={styles.cart_item}>
-      <AntDesign
-        style={{
-          padding: "0.2em",
-          backgroundColor: "white",
-          borderRadius: 25,
-          alignSelf: "flex-end",
-        }}
-        name="hearto"
-        size={20}
-        color={isFavourite ? "#dc3c11" : "#151110"}
-      />
-      <View style={{}}>
-        <Image
-          style={{
-            width: 120,
-            height: 120,
-            display: "block",
-          }}
-          resizeMode="cover"
-          source={{
-            uri: imageSrc,
+    <TouchableOpacity
+      onPress={() => {
+        console.log(navigation);
+        navigation.navigate("Details", {
+          name,
+          price,
+          color,
+          imageSrc,
+          PromoInfo,
+          Size,
+        });
+      }}
+    >
+      <View>
+        <Image style={{ width: 120, height: 120 }} source={{ uri: imageSrc }} />
+        <AntDesign
+          name="hearto"
+          color="black"
+          size={24}
+          onPress={() => {
+            if (favourite) {
+              navigation.navigate("Cart", {
+                name,
+                price,
+                color,
+                imageSrc,
+                Size,
+              });
+
+              setFavourite(!favourite);
+            }
           }}
         />
-        <Text style={{ color: "#a4a3a3", fontWeight: "800", fontSize: 18 }}>
-          {name}
-        </Text>
-        <Text style={{ color: "#dc3c11", fontSize: 20, fontWeight: "700" }}>
-          $ <Text style={{ color: "#151110" }}>{price}</Text>
-        </Text>
+        <Text>{name}</Text>
+        <Text>{price}</Text>
+        <Text>{color}</Text>
+        <Text>{Size}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 export default CartItem;
-
-const styles = StyleSheet.create({
-  cart_item: {
-    maxWidth: "45%",
-    backgroundColor: "#e9e8ed",
-    padding: "1em",
-
-    marginLeft: 10,
-    marginTop: 10,
-    borderRadius: 25,
-
-    textAlign: "center",
-
-    justifyContent: "space-evenly",
-    alignItems: "center",
-  },
-});

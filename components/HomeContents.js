@@ -1,24 +1,25 @@
-import React from 'react'
+import React from "react";
 import {
   StyleSheet,
   Text,
   View,
   ScrollView,
   TouchableOpacity,
-} from 'react-native'
-
-import { CartItem, HomeHeader } from '.'
+} from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { CartItem, HomeHeader } from ".";
+import { TextInput } from "react-native-gesture-handler";
 
 const bikeCategories = [
-  'All',
-  'RoadBike',
-  'Mountain',
-  'Urban',
-  'Hybrid',
-  'Cyclocross',
-]
+  "All",
+  "RoadBike",
+  "Mountain",
+  "Urban",
+  "Hybrid",
+  "Cyclocross",
+];
 
-const HomeContents = () => {
+const HomeContents = ({ navigation }) => {
   return (
     <>
       <HomeHeader />
@@ -26,15 +27,15 @@ const HomeContents = () => {
         <View style={styles.container_contents}>
           <Text
             style={{
-              fontWeight: '900',
-              color: '#e9e8ed',
+              fontWeight: "900",
+              color: "#e9e8ed",
               fontSize: 18,
               marginBottom: 10,
             }}
           >
-            The world's <Text style={{ color: '#dc3c11' }}>Best Bike</Text>
+            The world's <Text style={{ color: "#dc3c11" }}>Best Bike</Text>
           </Text>
-          <Text style={{ color: '#151110', fontWeight: 'bold', fontSize: 20 }}>
+          <Text style={{ color: "#151110", fontWeight: "bold", fontSize: 20 }}>
             Categories
           </Text>
 
@@ -49,11 +50,11 @@ const HomeContents = () => {
                 <TouchableOpacity key={idx} activeOpacity={0.75}>
                   <Text
                     style={{
-                      color: '#a4a3a3',
+                      color: "#a4a3a3",
                       fontSize: 20,
-                      fontWeight: '600',
-                      padding: '0.55em',
-                      backgroundColor: '#e9e8ed',
+                      fontWeight: "600",
+                      padding: "0.55em",
+                      backgroundColor: "#e9e8ed",
                       marginRight: 10,
                       borderRadius: 17,
                     }}
@@ -61,7 +62,7 @@ const HomeContents = () => {
                     {category}
                   </Text>
                 </TouchableOpacity>
-              )
+              );
             })}
           </ScrollView>
 
@@ -71,48 +72,75 @@ const HomeContents = () => {
             showsVerticalScrollIndicator={false}
             horizontal={false}
             contentContainerStyle={{
-              width: '100%',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
+              width: "100%",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "flex-start",
+              alignItems: "center",
               marginVertical: 20,
             }}
           >
             <CartItem
+              navigation={navigation}
               isFavourite
               name="Brompton Bike*"
-              price="1,250.00"
+              price="125.00"
+              Size="Large"
+              PromoInfo="Get  10% discount on every 2 items you buy"
               imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-PNG.png"
+              color="red"
             />
 
             <CartItem
+              navigation={navigation}
+              isFavourite
               name="Mountain Bike"
-              price="1,383.00"
+              price="123.00"
+              Size="Medium"
+              PromoInfo="Get  10% discount on every 2 items you buy"
+              imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-Background.png"
+              color="blue"
+            />
+
+            <CartItem
+              navigation={navigation}
+              isFavourite
+              color="green"
+              name="Mountain Bike"
+              price="136.00"
+              Size="Small"
+              PromoInfo="Get  10% discount on every 2 items you buy"
               imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-Background.png"
             />
 
             <CartItem
+              navigation={navigation}
+              isFavourite
+              color="white"
               name="Mountain Bike"
-              price="1,383.00"
+              price="102.00"
+              Size="Large"
+              PromoInfo="Get  10% discount on every 2 items you buy"
               imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-Background.png"
             />
 
             <CartItem
+              navigation={navigation}
+              isFavourite
               name="Mountain Bike"
-              price="1,383.00"
+              price="138.00"
+              Size="Large"
+              PromoInfo="Get  10% discount on every 2 items you buy"
               imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-Background.png"
             />
 
             <CartItem
+              navigation={navigation}
+              isFavourite
               name="Mountain Bike"
-              price="1,383.00"
-              imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-Background.png"
-            />
-
-            <CartItem
-              name="Mountain Bike"
-              price="1,383.00"
+              price="133.00"
+              Size="Large"
+              PromoInfo="Get  10% discount on every 2 items you buy"
               imageSrc="https://www.pngmart.com/files/6/Bicycle-Transparent-Background.png"
             />
           </ScrollView>
@@ -120,20 +148,20 @@ const HomeContents = () => {
       </View>
     </>
   );
-}
+};
 
-export default HomeContents
+export default HomeContents;
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
 
   container_contents: {
-    width: '95%',
+    width: "95%",
     marginVertical: 0,
-    marginHorizontal: 'auto',
-    padding: '1em',
+    marginHorizontal: "auto",
+    padding: "1em",
   },
-})
+});
