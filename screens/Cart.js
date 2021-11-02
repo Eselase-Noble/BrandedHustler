@@ -3,8 +3,10 @@ import { StyleSheet } from 'react-native'
 
 import { CartContents } from '../components'
 
-const Cart = ({ navigation }) => {
-  return <CartContents navigation={navigation} />
+const Cart = ({ navigation, route }) => {
+// const {name, price, color, imageSrc, PromoInfo, Size} = route.params;
+
+  return  <CartContents navigation={navigation} routeParams={route.params} />
 }
 
 export default Cart
