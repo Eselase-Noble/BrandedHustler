@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import { HomeContents } from '../components'
+import { HomeContents } from "../components";
 
-const Home = () => {
-  return <HomeContents />
-}
+const Home = ({ navigation }) => {
+  return <HomeContents navigation={navigation} />;
+};
 
-export default Home
+export default Home;
