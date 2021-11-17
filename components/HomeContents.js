@@ -84,6 +84,7 @@ const HomeContents = ({ navigation }) => {
               navigation={navigation}
               isFavourite
               name="Brompton Bike*"
+              review="Brompton Bicycle is a British manufacturer of folding bicycles based in Greenford, London. The Brompton folding bicycle and accessories are the company's core product, noted for its self-supporting compact size when stored"
               price="125.00"
               Size="Large"
               PromoInfo="Get  10% discount on every 2 items you buy"
@@ -95,6 +96,7 @@ const HomeContents = ({ navigation }) => {
               navigation={navigation}
               isFavourite
               name="Mountain Bike"
+              review="Buy Mountain Bikes from Evans Cycles here. Choose from our wide range of Bikes with Home delivery + Click & Collect from stores nationwide."
               price="123.00"
               Size="Medium"
               PromoInfo="Get  10% discount on every 2 items you buy"
