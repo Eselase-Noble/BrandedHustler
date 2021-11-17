@@ -122,7 +122,7 @@ const CartContents = ({ navigation, routeParams }) => {
       <View>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Main");
+            navigation.navigate("PAYMENT");
           }}
           style={{
             backgroundColor: "#dc3c11",
